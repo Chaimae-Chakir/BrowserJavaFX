@@ -27,7 +27,7 @@ public class MetierImpl implements IMetier {
     }
 
     public MetierImpl() {
-        Connection connection= SignletonConnexionDB.getConnection();
+        Connection connection= SingletonConnexionDB.getConnection();
     }
 
 
@@ -84,7 +84,7 @@ public class MetierImpl implements IMetier {
     }
     @Override
     public List<Page> getAllPage() {
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         List<Page> pages=new ArrayList<>();
         try {
             PreparedStatement pstm=conn.prepareStatement("select * from PAGE");

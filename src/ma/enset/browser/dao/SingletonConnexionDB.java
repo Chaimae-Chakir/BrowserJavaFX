@@ -3,7 +3,7 @@ package ma.enset.browser.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class SignletonConnexionDB {
+public class SingletonConnexionDB {
 
     private static Connection connection;
     static {

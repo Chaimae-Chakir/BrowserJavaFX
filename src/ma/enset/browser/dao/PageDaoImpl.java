@@ -14,7 +14,7 @@ public class PageDaoImpl implements PageDao {
 
     @Override
     public void addPage(Page page) {
-       Connection connection= SignletonConnexionDB.getConnection();
+       Connection connection= SingletonConnexionDB.getConnection();
 
         try {
             PreparedStatement pstm=connection.prepareStatement("insert into PAGE(IDHISTORIQUE,IDFAVORI,NAMEPAGE,URLPAGE,PHOTO,DATEPAGE) values(?,?,?,?,?,?)");
@@ -32,7 +32,7 @@ public class PageDaoImpl implements PageDao {
 
     @Override
     public List<Page> getAllPage() {
-        Connection conn= SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         List<Page> pages=new ArrayList<>();
         try {
             PreparedStatement pstm=conn.prepareStatement("select * from PAGE");
@@ -54,7 +54,7 @@ public class PageDaoImpl implements PageDao {
 
     @Override
     public List<Page> searchPage(String cle) {
-        Connection connection= SignletonConnexionDB.getConnection();
+        Connection connection= SingletonConnexionDB.getConnection();
 
         List<Page> pages=new ArrayList<>();
         try {
@@ -82,7 +82,7 @@ public class PageDaoImpl implements PageDao {
 
     @Override
     public void deletePage(Page page) {
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("DELETE FROM PAGE WHERE IDPAGE=?");
             pstm.setInt(1,page.getId());
@@ -96,7 +96,7 @@ public class PageDaoImpl implements PageDao {
 
     @Override
     public List<Page> getPageByIdHistorique(LocalDate date) {
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         List<Page> pages=new ArrayList<>();
         try {
             PreparedStatement pstm=conn.prepareStatement("select * from PAGE WHERE IDHISTORIQUE=?");
@@ -116,7 +116,7 @@ public class PageDaoImpl implements PageDao {
     }
     @Override
     public void affectPageToDownload(Telechargement telechargement, Page page) throws SQLException {
-        Connection conn= SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDTELECHARGEMENT=? WHERE IDPAGE=?");
             pstm.setInt(1,telechargement.getIdTelechargement());
@@ -129,7 +129,7 @@ public class PageDaoImpl implements PageDao {
     @Override
     public void affectPageToHistorical(Historique historique, Page page) throws SQLException {
         page.setHistorique(historique);
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDHISTORIQUE=? WHERE IDPAGE=?");
             pstm.setDate(1,Date.valueOf(historique.getIdHistorique()));
@@ -142,7 +142,7 @@ public class PageDaoImpl implements PageDao {
     @Override
     public void affectPageTofavorite(Favori favori, Page page) throws SQLException {
         page.setFavori(favori);
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDFAVORI=? WHERE IDPAGE=?");
             pstm.setInt(1,favori.getIdFavori());

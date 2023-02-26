@@ -12,7 +12,7 @@ public class HistoriqueDaoImpl implements HistoriqueDao{
 
     @Override
     public void supprimerPageInHistorique(Page page) {
-        Connection conn= SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDHISTORIQUE=? WHERE IDPAGE=?");
             pstm.setDate(1, Date.valueOf("0001-01-01"));
@@ -26,7 +26,7 @@ public class HistoriqueDaoImpl implements HistoriqueDao{
     }
     public void affectPageToHistorical(Historique historique, Page page) throws SQLException {
         page.setHistorique(historique);
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDHISTORIQUE=? WHERE IDPAGE=?");
             pstm.setDate(1,Date.valueOf(historique.getIdHistorique()));

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class TelechargementDaoImpl  implements TelechargementDao {
     @Override
     public void affectPageToDownload(Telechargement telechargement, Page page) throws SQLException {
-        Connection conn= SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDTELECHARGEMENT=? WHERE IDPAGE=?");
             pstm.setInt(1,telechargement.getIdTelechargement());

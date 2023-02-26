@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 public class FavoriDaoImpl implements FavoriDao{
     @Override
     public void supprimerPageInFavoris(Page page){
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDFAVORI=? WHERE IDPAGE=?");
             pstm.setInt(1,1);
@@ -22,7 +22,7 @@ public class FavoriDaoImpl implements FavoriDao{
 
     @Override
     public void ajouterPagetoFavoris(Page page){
-        Connection conn=SignletonConnexionDB.getConnection();
+        Connection conn= SingletonConnexionDB.getConnection();
         try {
             PreparedStatement pstm=conn.prepareStatement("update PAGE SET IDFAVORI=? WHERE IDPAGE=?");
             pstm.setInt(1,2);
